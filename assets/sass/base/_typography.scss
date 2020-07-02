@@ -1,208 +1,211 @@
-
 /* Type */
 
-	html {
-		font-size: 16pt;
+body,
+input,
+select,
+textarea {
+  color: _palette(fg);
+  font-family: _font(family);
+  font-size: 16.5pt;
+  font-weight: _font(weight);
+  line-height: 1.75;
 
-		@include breakpoint('<=xlarge') {
-			font-size: 12pt;
-		}
+  @include breakpoint("<=xlarge") {
+    font-size: 13pt;
+  }
 
-		@include breakpoint('<=large') {
-			font-size: 11pt;
-		}
+  @include breakpoint("<=large") {
+    font-size: 12pt;
+  }
 
-		@include breakpoint('<=xxsmall') {
-			font-size: 10pt;
-		}
-	}
+  @include breakpoint("<=xxsmall") {
+    font-size: 11pt;
+  }
+}
 
-	body {
-		color: _palette(fg);
-	}
+a {
+  @include vendor(
+    "transition",
+    (
+      "color #{_duration(transition)} ease",
+      "border-bottom-color #{_duration(transition)} ease"
+    )
+  );
+  border-bottom: dotted 1px _palette(fg-light);
+  color: inherit;
+  text-decoration: none;
 
-	body, input, select, textarea {
-		font-family: _font(family);
-		font-weight: _font(weight);
-		font-size: 1rem;
-		line-height: 2.375;
-	}
+  &:hover {
+    border-bottom-color: transparent;
+    color: _palette(fg-bold);
+  }
+}
 
-	a {
-		@include vendor('transition', (
-			'color #{_duration(transition)} ease-in-out',
-			'background-color #{_duration(transition)} ease-in-out',
-			'border-color #{_duration(transition)} ease-in-out',
-			'box-shadow #{_duration(transition)} ease-in-out'
-		));
-		border-bottom: dotted 1px;
-		text-decoration: none;
+strong,
+b {
+  color: _palette(fg-bold);
+  font-weight: _font(weight-bold);
+}
 
-		&:hover {
-			border-bottom-color: transparent;
-		}
-	}
+em,
+i {
+  font-style: italic;
+}
 
-	strong, b {
-		font-weight: _font(weight-bold);
-	}
+p {
+  margin: 0 0 _size(element-margin) 0;
+}
 
-	em, i {
-		font-style: italic;
-	}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: _palette(fg-bold);
+  font-weight: _font(weight-bold);
+  line-height: 1.5;
+  margin: 0 0 (_size(element-margin) * 0.25) 0;
 
-	p {
-		text-align: justify;
-		margin: 0 0 _size(element-margin) 0;
-	}
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
 
-	h1, h2, h3, h4, h5, h6 {
-		font-family: _font(family-heading);
-		font-weight: _font(weight-heading);
-		line-height: 1.5;
-		letter-spacing: 0.075em;
-		text-transform: uppercase;
-		margin: 0 0 (_size(element-margin) * 0.5) 0;
+h1 {
+  font-size: 2.75em;
 
-		a {
-			border-bottom: 0;
-			color: inherit;
-			text-decoration: none;
-		}
-	}
+  &.major {
+    margin: 0 0 (_size(element-margin) * 0.65) 0;
+    position: relative;
+    padding-bottom: 0.35em;
 
-	h1 {
-		font-size: 4rem;
-		line-height: 1.1;
-		margin: 0 0 _size(element-margin) 0;
-	}
+    &:after {
+      @include vendor(
+        "background-image",
+        "linear-gradient(to right, #{_palette(accent1)}, #{_palette(accent3)})"
+      );
+      @include vendor("transition", "max-width #{_duration(transition)} ease");
+      border-radius: 0.2em;
+      bottom: 0;
+      content: "";
+      height: 0.05em;
+      position: absolute;
+      right: 0;
+      width: 100%;
+    }
+  }
+}
 
-	h2 {
-		font-size: 1.75rem;
-		line-height: 1.3;
-		margin: 0 0 (_size(element-margin) * 0.75) 0;
-	}
+h2 {
+  font-size: 1.75em;
+}
 
-	h3 {
-		font-size: 1.25rem;
-		margin: 0 0 (_size(element-margin) * 0.75) 0;
-	}
+h3 {
+  font-size: 1.1em;
+}
 
-	h4 {
-		font-size: 1rem;
-	}
+h4 {
+  font-size: 1em;
+}
 
-	h5 {
-		font-size: 0.9rem;
-	}
+h5 {
+  font-size: 0.8em;
+}
 
-	h6 {
-		font-size: 0.8rem;
-	}
+h6 {
+  font-size: 0.6em;
+}
 
-	sub {
-		font-size: 0.8rem;
-		position: relative;
-		top: 0.5rem;
-	}
+@include breakpoint("<=small") {
+  h1 {
+    font-size: 2em;
+  }
 
-	sup {
-		font-size: 0.8rem;
-		position: relative;
-		top: -0.5rem;
-	}
+  h2 {
+    font-size: 1.25em;
+  }
 
-	blockquote {
-		border-left: solid 4px;
-		font-style: italic;
-		margin: 0 0 _size(element-margin) 0;
-		padding: (_size(element-margin) / 4) 0 (_size(element-margin) / 4) _size(element-margin);
-	}
+  h3 {
+    font-size: 1em;
+  }
 
-	code {
-		border-radius: _size(border-radius);
-		border: solid 2px;
-		font-family: _font(family-fixed);
-		font-size: 0.9rem;
-		margin: 0 0.25rem;
-		padding: 0.25rem 0.65rem;
-	}
+  h4 {
+    font-size: 0.8em;
+  }
 
-	pre {
-		-webkit-overflow-scrolling: touch;
-		font-family: _font(family-fixed);
-		font-size: 0.9rem;
-		margin: 0 0 _size(element-margin) 0;
+  h5 {
+    font-size: 0.6em;
+  }
 
-		code {
-			display: block;
-			line-height: 1.75;
-			padding: 1rem 1.5rem;
-			overflow-x: auto;
-		}
-	}
+  h6 {
+    font-size: 0.6em;
+  }
+}
 
-	hr {
-		border: 0;
-		border-bottom: solid 2px;
-		margin: (_size(element-margin) * 1.5) 0;
+sub {
+  font-size: 0.8em;
+  position: relative;
+  top: 0.5em;
+}
 
-		&.major {
-			margin: (_size(element-margin) * 2.5) 0;
-		}
-	}
+sup {
+  font-size: 0.8em;
+  position: relative;
+  top: -0.5em;
+}
 
-	.align-left {
-		text-align: left;
-	}
+blockquote {
+  border-left: solid (_size(border-width) * 4) _palette(border);
+  font-style: italic;
+  margin: 0 0 _size(element-margin) 0;
+  padding: (_size(element-margin) / 4) 0 (_size(element-margin) / 4)
+    _size(element-margin);
+}
 
-	.align-center {
-		text-align: center;
-	}
+code {
+  background: _palette(border-bg);
+  border-radius: _size(border-radius);
+  border: solid _size(border-width) _palette(border);
+  font-family: _font(family-fixed);
+  font-size: 0.9em;
+  margin: 0 0.25em;
+  padding: 0.25em 0.65em;
+}
 
-	.align-right {
-		text-align: right;
-	}
+pre {
+  -webkit-overflow-scrolling: touch;
+  font-family: _font(family-fixed);
+  font-size: 0.9em;
+  margin: 0 0 _size(element-margin) 0;
 
-	@mixin color-typography($p: null) {
-		@if $p != null {
-			color: _palette($p, fg);
-		}
+  code {
+    display: block;
+    line-height: 1.75em;
+    padding: 1em 1.5em;
+    overflow-x: auto;
+  }
+}
 
-		input, select, textarea {
-			color: _palette($p, fg-bold);
-		}
+hr {
+  border: 0;
+  border-bottom: solid _size(border-width) _palette(border);
+  margin: _size(element-margin) 0;
 
-		a {
-			color: _palette($p, fg-bold);
-			border-bottom-color: transparentize(_palette($p, fg), 0.5);
+  &.major {
+    margin: (_size(element-margin) * 1.5) 0;
+  }
+}
 
-			&:hover {
-				border-bottom-color: transparent;
-				color: _palette($p, accent) !important;
-			}
-		}
+.align-left {
+  text-align: left;
+}
 
-		strong, b {
-			color: _palette($p, fg-bold);
-		}
+.align-center {
+  text-align: center;
+}
 
-		h1, h2, h3, h4, h5, h6 {
-			color: _palette($p, fg-bold);
-		}
-
-		blockquote {
-			border-left-color: _palette($p, border);
-		}
-
-		code {
-			background: _palette($p, border-bg);
-			border-color: _palette($p, border);
-		}
-
-		hr {
-			border-bottom-color: _palette($p, border);
-		}
-	}
-
-	@include color-typography;
+.align-right {
+  text-align: right;
+}

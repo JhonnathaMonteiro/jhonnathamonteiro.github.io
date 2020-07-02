@@ -1,30 +1,25 @@
-
 /* Row */
 
-	.row {
-		@include html-grid(1.5rem);
+.row {
+  @include html-grid(1.5em);
 
-		@include breakpoint('<=xlarge') {
-			@include html-grid(1.5rem, 'xlarge');
-		}
+  @include breakpoint("<=xlarge") {
+    @include html-grid(1.5em, "xlarge");
+  }
 
-		@include breakpoint('<=large') {
-			@include html-grid(1.5rem, 'large');
-		}
+  @include breakpoint("<=large") {
+    @include html-grid(1.5em, "large");
+  }
 
-		@include breakpoint('<=medium') {
-			@include html-grid(1.5rem, 'medium');
-		}
+  @include breakpoint("<=medium") {
+    @include html-grid(1.5em, "medium");
+  }
 
-		@include breakpoint('<=small') {
-			@include html-grid(1.5rem, 'small');
-		}
+  @include breakpoint("<=small") {
+    @include html-grid(1.5em, "small");
+  }
 
-		@include breakpoint('<=xsmall') {
-			@include html-grid(1.5rem, 'xsmall');
-		}
-
-		@include breakpoint('<=xxsmall') {
-			@include html-grid(1.5rem, 'xxsmall');
-		}
-	}
+  @include breakpoint("<=xsmall") {
+    @include html-grid(1.5em, "xsmall");
+  }
+}
